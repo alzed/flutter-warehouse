@@ -9,11 +9,23 @@ class FriendlyChatApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'FriendlyChat',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('FriendlyChat'),
-        ),
-      ),
+      home: ChatScreen(),
     );
+  }
+}
+
+class ChatScreen extends StatefulWidget {
+  @override
+  _ChatScreenState createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('FriendlyChat'),
+      ),
+    )
   }
 }
