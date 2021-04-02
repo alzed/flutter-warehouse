@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(DiceApp());
@@ -31,30 +32,38 @@ class _DicePageState extends State<DicePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Row(
-        children: [
-          Expanded(
-            child: TextButton(
-              onPressed: () {
-                setState(() {
-                  leftDiceId += 1;
-                });
-              },
-              child: Image.asset('images/dice$leftDiceId.png'),
+    return TextButton(
+      onPressed: () {
+        setState(() {
+          leftDiceId = Random().nextInt(6) + 1;
+          rightDiceId = Random().nextInt(6) + 1;
+        });
+      },
+      child: Center(
+        child: Row(
+          children: [
+            Expanded(
+              child: TextButton(
+                onPressed: () {
+                  setState(() {
+                    leftDiceId = Random().nextInt(6) + 1;
+                  });
+                },
+                child: Image.asset('images/dice$leftDiceId.png'),
+              ),
             ),
-          ),
-          Expanded(
-            child: TextButton(
-              onPressed: () {
-                setState(() {
-                  rightDiceId += 1;
-                });
-              },
-              child: Image.asset('images/dice$rightDiceId.png'),
+            Expanded(
+              child: TextButton(
+                onPressed: () {
+                  setState(() {
+                    rightDiceId = Random().nextInt(6) + 1;
+                  });
+                },
+                child: Image.asset('images/dice$rightDiceId.png'),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
