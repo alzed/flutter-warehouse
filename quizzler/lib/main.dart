@@ -34,11 +34,13 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Widget> scoreBoard = [];
+  int score = 0;
 
   void checkAnswer(bool input) {
     setState(() {
       bool correctAnswer = riddles.getAnswer();
       if (input == correctAnswer) {
+        score++;
         scoreBoard.add(Icon(
           Icons.done,
           color: Colors.green,
@@ -62,14 +64,15 @@ class _QuizPageState extends State<QuizPage> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-            title: Text('Result'),
-            content: Text('You have completed the quiz!'),
+            title: Text('Quiz Completed!'),
+            content: Text('Your score is $score'),
             actions: [
               TextButton(
                 child: Text('Done'),
                 onPressed: () {
                   setState(() {
                     scoreBoard.clear();
+                    score = 0;
                     Navigator.pop(context);
                   });
                 },
