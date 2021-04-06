@@ -1,4 +1,8 @@
+import 'riddle_bank.dart';
+
 import 'package:flutter/material.dart';
+
+RiddleBank riddles = RiddleBank();
 
 void main() {
   runApp(QuizApp());
@@ -14,7 +18,10 @@ class QuizApp extends StatelessWidget {
           title: Text('Quizzler'),
           backgroundColor: Colors.blueGrey[900],
         ),
-        body: QuizPage(),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: QuizPage(),
+        ),
       ),
     );
   }
@@ -28,6 +35,50 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Widget> scoreBoard = [];
 
+  void checkAnswer(bool input) {
+    setState(() {
+      bool correctAnswer = riddles.getAnswer();
+      if (input == correctAnswer) {
+        scoreBoard.add(Icon(
+          Icons.done,
+          color: Colors.green,
+        ));
+      } else {
+        scoreBoard.add(Icon(
+          Icons.close,
+          color: Colors.red,
+        ));
+      }
+      riddles.next();
+      if (riddles.isFinished()) {
+        showFinished();
+      }
+    });
+  }
+
+  Future<void> showFinished() async {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+            title: Text('Result'),
+            content: Text('You have completed the quiz!'),
+            actions: [
+              TextButton(
+                child: Text('Done'),
+                onPressed: () {
+                  setState(() {
+                    scoreBoard.clear();
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+            ]);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,9 +88,11 @@ class _QuizPageState extends State<QuizPage> {
           flex: 7,
           child: Center(
             child: Text(
-              'Question goes here',
+              riddles.getQuestion(),
+              textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
+                fontSize: 25.0,
               ),
             ),
           ),
@@ -49,18 +102,18 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
-              child: Text('TRUE'),
+              child: Text(
+                'TRUE',
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
+              ),
               style: ButtonStyle(
                 backgroundColor:
                     MaterialStateProperty.all<Color>(Colors.greenAccent[400]),
               ),
               onPressed: () {
-                setState(() {
-                  scoreBoard.add(Icon(
-                    Icons.done,
-                    color: Colors.green,
-                  ));
-                });
+                checkAnswer(true);
               },
             ),
           ),
@@ -70,29 +123,29 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
-              child: Text('FALSE'),
+              child: Text(
+                'FALSE',
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
+              ),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
               ),
               onPressed: () {
-                setState(() {
-                  scoreBoard.add(Icon(
-                    Icons.close,
-                    color: Colors.red,
-                  ));
-                });
+                checkAnswer(false);
               },
             ),
           ),
         ),
         Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                children: scoreBoard,
-              ),
-            ))
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              children: scoreBoard,
+            ),
+          ),
+        ),
       ],
     );
   }
