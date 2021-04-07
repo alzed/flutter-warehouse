@@ -59,16 +59,15 @@ class StoryBrain {
         _storyNumber = 2;
       } else {
         _storyNumber = 3;
-        restart();
       }
     } else if (_storyNumber == 2) {
       if (choiceNumber == 1) {
         _storyNumber = 5;
-        restart();
       } else {
         _storyNumber = 4;
-        restart();
       }
+    } else {
+      restart();
     }
   }
 
