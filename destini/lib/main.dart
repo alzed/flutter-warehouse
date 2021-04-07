@@ -61,8 +61,7 @@ class _StoryPageState extends State<StoryPage> {
                         MaterialStateProperty.all<Color>(Colors.red),
                   ),
                   child: Text(
-                    //TODO: Step 13 - Use the storyBrain to get the text for choice 1.
-                    'Choice 1',
+                    storyBrain.getChoice1(),
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Colors.white,
@@ -87,8 +86,7 @@ class _StoryPageState extends State<StoryPage> {
                         MaterialStateProperty.all<Color>(Colors.blue),
                   ),
                   child: Text(
-                    //TODO: Step 14 - Use the storyBrain to get the text for choice 2.
-                    'Choice 2',
+                    storyBrain.getChoice2(),
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Colors.white,
