@@ -1,6 +1,8 @@
 import 'story.dart';
 
 class StoryBrain {
+  int storyNumber = 0;
+
   List<Story> _storyData = [
     Story(
         storyTitle:
@@ -33,18 +35,16 @@ class StoryBrain {
         choice2: '')
   ];
 
-  int storyNumber = 0;
-
   String getStory() {
-    return _storyData[0].storyTitle;
+    return _storyData[storyNumber].storyTitle;
   }
 
   String getChoice1() {
-    return _storyData[0].choice1;
+    return _storyData[storyNumber].choice1;
   }
 
   String getChoice2() {
-    return _storyData[0].choice2;
+    return _storyData[storyNumber].choice2;
   }
 
   void nextStory(int choiceNumber) {
@@ -75,7 +75,6 @@ class StoryBrain {
   void restart() {
     storyNumber = 0;
   }
-//TODO: Step 23 - Use the storyNumber property inside getStory(), getChoice1() and getChoice2() so that it gets the updated story and choices rather than always just the first (0th) one.
 
 //TODO: Step 25 - Change the storyNumber property into a private property so that only story_brain.dart has access to it. You can do this by right clicking on the name (storyNumber) and selecting Refactor -> Rename to make the change across all the places where it's used.
 
