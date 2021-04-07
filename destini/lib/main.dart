@@ -44,6 +44,7 @@ class _StoryPageState extends State<StoryPage> {
                     style: TextStyle(
                       fontSize: 25.0,
                     ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ),
