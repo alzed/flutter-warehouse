@@ -13,6 +13,7 @@ class Category extends StatelessWidget {
     double borderRadius = categoryHeight / 2;
 
     return Material(
+      color: Colors.transparent,
       child: Container(
         height: categoryHeight,
         padding: EdgeInsets.all(8.0),
