@@ -14,15 +14,15 @@ class CategoryRoute extends StatelessWidget {
     'Currency',
   ];
 
-  static const List<Color> _baseColors = [
-    Colors.teal,
-    Colors.orange,
-    Colors.pinkAccent,
-    Colors.blueAccent,
-    Colors.yellow,
-    Colors.greenAccent,
-    Colors.purpleAccent,
-    Colors.red,
+  static List<Color> _baseColors = [
+    Colors.teal[100],
+    Colors.orange[100],
+    Colors.pinkAccent[100],
+    Colors.blueAccent[100],
+    Colors.yellow[100],
+    Colors.greenAccent[100],
+    Colors.purpleAccent[100],
+    Colors.red[100],
   ];
 
   @override
@@ -38,11 +38,8 @@ class CategoryRoute extends StatelessWidget {
         centerTitle: true,
       ),
       backgroundColor: Colors.green[100],
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: categoryList(
-            categoryNames: _categoryNames, baseColors: _baseColors),
-      ),
+      body:
+          categoryList(categoryNames: _categoryNames, baseColors: _baseColors),
     );
   }
 

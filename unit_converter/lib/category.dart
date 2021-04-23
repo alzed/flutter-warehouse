@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'converter_screen.dart';
+
 class Category extends StatelessWidget {
   Category({@required this.icon, @required this.color, @required this.text});
 
@@ -16,9 +18,16 @@ class Category extends StatelessWidget {
       color: Colors.transparent,
       child: Container(
         height: categoryHeight,
-        padding: EdgeInsets.all(8.0),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ConverterRoute(
+                          category: text,
+                          color: color,
+                        )));
+          },
           borderRadius: BorderRadius.circular(borderRadius),
           highlightColor: color,
           splashColor: color,
