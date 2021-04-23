@@ -27,16 +27,33 @@ class CategoryRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: ListView.builder(
-        padding: EdgeInsets.all(8.0),
-        itemCount: _categoryNames.length,
-        itemBuilder: (context, index) => Category(
-          color: _baseColors[index],
-          icon: Icons.cake,
-          text: _categoryNames[index],
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green[100],
+        title: Text(
+          'UNIT CONVERTER',
+          style: TextStyle(fontSize: 30.0, color: Colors.black),
         ),
+        elevation: 0.0,
+        centerTitle: true,
+      ),
+      backgroundColor: Colors.green[100],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: categoryList(
+            categoryNames: _categoryNames, baseColors: _baseColors),
+      ),
+    );
+  }
+
+  Widget categoryList({List<String> categoryNames, List<Color> baseColors}) {
+    return ListView.builder(
+      padding: EdgeInsets.all(8.0),
+      itemCount: categoryNames.length,
+      itemBuilder: (context, index) => Category(
+        color: baseColors[index],
+        icon: Icons.cake,
+        text: categoryNames[index],
       ),
     );
   }
