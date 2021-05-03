@@ -70,7 +70,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
             // filled: true,
             hintText: ' Search for places...',
             hintStyle: TextStyle(
-              fontSize: 20.0,
+              fontSize: 23.0,
               color: Colors.grey,
             ),
             suffix: IconButton(
