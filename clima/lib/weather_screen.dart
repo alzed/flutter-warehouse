@@ -20,27 +20,29 @@ class _WeatherScreenState extends State<WeatherScreen> {
   void initState() {
     super.initState();
     updateUI();
+    getData();
   }
 
-  void updateUI([dynamic weather]) async {
-    // if (weather == null) {
-    //   weather = await forecast.getData();
-    // }
+  void getData() async {
+    dynamic initWeather = await forecast.getData();
+    updateUI(initWeather);
+  }
+
+  void updateUI([dynamic weather]) {
     setState(() {
       if (weather != null) {
         weatherData = weather;
       } else {
         weatherData = {
-          'location': 'Region',
+          'location': '...',
           'local_time': DateTime.now().toString(),
-          'description': 'Cloudy',
-          'temperature': '25',
-          'feels_like': '25',
-          'wind_speed': '0',
-          'humidity': '90',
-          'uv_index': '1.5',
+          'description': '...',
+          'temperature': '...',
+          'feels_like': '...',
+          'wind_speed': '...',
+          'humidity': '...',
+          'uv_index': '...',
           'icon': 't01d',
-          // 'https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0004_black_low_cloud.png',
         };
       }
     });
