@@ -55,6 +55,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
           controller: searchText,
           cursorColor: Colors.white,
           keyboardType: TextInputType.text,
+          style: TextStyle(
+            fontSize: 23.0,
+          ),
           onSubmitted: (String place) async {
             context.loaderOverlay.show();
             Forecast forecast = Forecast(location: place);
@@ -67,7 +70,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
               Icons.search,
               color: Colors.white,
             ),
-            // filled: true,
             hintText: ' Search for places...',
             hintStyle: TextStyle(
               fontSize: 23.0,
