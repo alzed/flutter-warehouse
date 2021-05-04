@@ -60,10 +60,11 @@ class WeatherInterface extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            padding:
+                const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
             child: Divider(
               thickness: 0.8,
-              color: Colors.white,
+              color: Colors.grey,
             ),
           ),
           Expanded(
