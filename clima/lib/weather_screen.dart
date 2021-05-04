@@ -57,6 +57,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
           controller: searchText,
           cursorColor: Colors.white,
           keyboardType: TextInputType.text,
+          textCapitalization: TextCapitalization.sentences,
           style: TextStyle(
             fontSize: 23.0,
           ),
