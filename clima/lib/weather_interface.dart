@@ -35,14 +35,17 @@ class WeatherInterface extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
+            flex: 2,
             child: Image(
               image: NetworkImage(
                   'https://www.weatherbit.io/static/img/icons/$icon.png'),
             ),
           ),
           Expanded(
+            flex: 2,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 TemperatureContent(
                   value: temperature,
@@ -64,6 +67,7 @@ class WeatherInterface extends StatelessWidget {
             ),
           ),
           Expanded(
+            flex: 3,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
