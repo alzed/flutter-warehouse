@@ -30,9 +30,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   void updateUI([dynamic weather]) {
     setState(() {
-      if (weather != null) {
-        weatherData = weather;
-      } else {
+      if (weather == null) {
         weatherData = {
           'location': '...',
           'local_time': DateTime.now().toString(),
@@ -44,7 +42,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
           'uv_index': '...',
           'icon': 't01d',
         };
+        return;
       }
+      weatherData = weather;
     });
   }
 
@@ -62,11 +62,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
             fontSize: 23.0,
           ),
           onSubmitted: (String place) async {
-            context.loaderOverlay.show();
-            Forecast forecast = Forecast(location: place);
-            dynamic locationWeather = await forecast.getData();
-            updateUI(locationWeather);
-            context.loaderOverlay.hide();
+            if (place != null) {
+              context.loaderOverlay.show();
+              Forecast forecast = Forecast(location: place);
+              dynamic locationWeather = await forecast.getData();
+              updateUI(locationWeather);
+              context.loaderOverlay.hide();
+            }
           },
           decoration: InputDecoration(
             icon: Icon(
