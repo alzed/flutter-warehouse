@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'icon_content.dart';
-import 'temperature_content.dart';
+import 'components/icon_content.dart';
+import 'components/temperature_content.dart';
 
 class WeatherInterface extends StatelessWidget {
   WeatherInterface({

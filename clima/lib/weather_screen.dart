@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import 'forecast.dart';
+import 'services/forecast.dart';
 
 class WeatherScreen extends StatefulWidget {
   @override
