@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-const weatherApi = 'REPLACE_WEATHERBIT_API_KEY';
+const weatherApi = '00d831f0313b4f3283917dda5d0ac6a0';
 
 class Weather {
   Future<dynamic> getWeather(double latitude, double longitude) async {
@@ -12,8 +12,10 @@ class Weather {
       'lon': longitude.toString(),
     }));
 
-    var data = jsonDecode(response.body);
-    return data;
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    }
+    return null;
   }
 
   Future<dynamic> getWeatherLocation(String location) async {
@@ -23,7 +25,9 @@ class Weather {
       'city': location,
     }));
 
-    var data = jsonDecode(response.body);
-    return data;
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    }
+    return null;
   }
 }
