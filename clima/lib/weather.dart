@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-const weatherApi = '00d831f0313b4f3283917dda5d0ac6a0';
+const weatherApi = 'REPLACE_WEATHERBIT_API_KEY';
 
 class Weather {
   Future<dynamic> getWeather(double latitude, double longitude) async {
