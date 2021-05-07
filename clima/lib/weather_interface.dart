@@ -37,6 +37,12 @@ class WeatherInterface extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Image(
+              errorBuilder: (context, exception, stackTrace) {
+                return Icon(
+                  Icons.sentiment_dissatisfied_outlined,
+                  size: 60.0,
+                );
+              },
               image: NetworkImage(
                   'https://www.weatherbit.io/static/img/icons/$icon.png'),
             ),
