@@ -24,7 +24,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   }
 
   void getData() async {
-    dynamic initWeather = await forecast.getData();
+    Map<String, String> initWeather = await forecast.getData();
     updateUI(initWeather);
   }
 
@@ -40,7 +40,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
           'wind_speed': '...',
           'humidity': '...',
           'uv_index': '...',
-          'icon': 't01d',
+          'icon': 'c02d',
         };
         return;
       }
@@ -62,10 +62,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
             fontSize: 23.0,
           ),
           onSubmitted: (String place) async {
-            if (place != null) {
+            if (place != '') {
               context.loaderOverlay.show();
               Forecast forecast = Forecast(location: place);
-              dynamic locationWeather = await forecast.getData();
+              Map<String, String> locationWeather = await forecast.getData();
               updateUI(locationWeather);
               context.loaderOverlay.hide();
             }
@@ -98,7 +98,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
             onPressed: () async {
               searchText.clear();
               context.loaderOverlay.show();
-              dynamic weather = await forecast.getData();
+              Map<String, String> weather = await forecast.getData();
               updateUI(weather);
               context.loaderOverlay.hide();
             },
