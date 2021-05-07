@@ -12,6 +12,7 @@ class CategoryRoute extends StatelessWidget {
     'Digital Storage',
     'Energy',
     'Currency',
+    'Cryptocurrency'
   ];
 
   static List<Color> _baseColors = [
@@ -20,9 +21,10 @@ class CategoryRoute extends StatelessWidget {
     Colors.pinkAccent[100],
     Colors.blueAccent[100],
     Colors.yellow[100],
-    Colors.greenAccent[100],
+    Colors.green[200],
     Colors.purpleAccent[100],
     Colors.red[100],
+    Colors.grey,
   ];
 
   @override
