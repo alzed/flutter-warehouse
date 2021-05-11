@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'category.dart';
 
-class CategoryRoute extends StatelessWidget {
+class CategoryScreen extends StatelessWidget {
   static const List<String> _categoryNames = [
     'Length',
     'Area',
@@ -51,7 +51,7 @@ class CategoryRoute extends StatelessWidget {
       itemCount: categoryNames.length,
       itemBuilder: (context, index) => Category(
         color: baseColors[index],
-        icon: Icons.cake,
+        icon: Icons.edit,
         text: categoryNames[index],
       ),
     );
