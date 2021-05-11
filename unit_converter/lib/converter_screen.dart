@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ConverterRoute extends StatelessWidget {
-  ConverterRoute({@required this.category, @required this.color});
+class ConverterScreen extends StatelessWidget {
+  ConverterScreen({@required this.category, @required this.color});
 
   final String category;
   final Color color;
@@ -15,6 +15,19 @@ class ConverterRoute extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: color,
+      ),
+      body: Column(
+        children: [
+          TextField(
+            keyboardType: TextInputType.number,
+            onChanged: (String value) {},
+          ),
+          DropdownButtonHideUnderline(
+            child: DropdownButton(
+              items: [],
+            ),
+          )
+        ],
       ),
     );
   }
