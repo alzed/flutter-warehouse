@@ -10,11 +10,9 @@ class BitcoinTickerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.light().copyWith(
-        primaryColor: Color(0xFF1D3B53),
-      ),
       home: Scaffold(
         body: Container(),
+        backgroundColor: Color(0xFF1D3B53),
       ),
     );
   }
