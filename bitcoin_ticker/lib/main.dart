@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'converter_screen.dart';
 
 void main() {
   runApp(BitcoinTickerApp());
@@ -11,8 +12,8 @@ class BitcoinTickerApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Container(),
         backgroundColor: Color(0xFF1D3B53),
+        body: ConverterScreen(),
       ),
     );
   }
