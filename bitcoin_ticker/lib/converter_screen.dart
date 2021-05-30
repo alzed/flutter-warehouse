@@ -30,6 +30,12 @@ class _ConverterScreenState extends State<ConverterScreen> {
                   DropdownButtonHideUnderline(
                     child: DropdownButton(
                       value: bitcoin,
+                      icon: Icon(
+                        Icons.arrow_drop_down,
+                        color: Colors.white,
+                        size: 40.0,
+                      ),
+                      dropdownColor: Color(0xFF1D3B53),
                       onChanged: (String coin) {
                         setState(() {
                           bitcoin = coin;
@@ -69,6 +75,11 @@ class _ConverterScreenState extends State<ConverterScreen> {
                   DropdownButtonHideUnderline(
                     child: DropdownButton(
                       value: currency,
+                      icon: Icon(
+                        Icons.arrow_drop_down,
+                        color: Color(0xFF1D3B53),
+                        size: 40.0,
+                      ),
                       onChanged: (String coin) {
                         setState(() {
                           currency = coin;
