@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'coin_data.dart';
+import 'coin_dropdown_field.dart';
+import 'value_input_field.dart';
 
 class ConverterScreen extends StatefulWidget {
   const ConverterScreen({Key key}) : super(key: key);
@@ -25,42 +27,27 @@ class _ConverterScreenState extends State<ConverterScreen> {
             child: Container(
               color: Color(0xFF1D3B53),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  DropdownButtonHideUnderline(
-                    child: DropdownButton(
-                      value: bitcoin,
-                      icon: Icon(
-                        Icons.arrow_drop_down,
-                        color: Colors.white,
-                        size: 40.0,
-                      ),
-                      dropdownColor: Color(0xFF1D3B53),
-                      onChanged: (String coin) {
-                        setState(() {
-                          bitcoin = coin;
-                        });
-                      },
-                      items: kCryptoList
-                          .map<DropdownMenuItem<String>>((String coin) {
-                        return DropdownMenuItem<String>(
-                          value: coin,
-                          child: Text(
-                            coin,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        );
-                      }).toList(),
-                    ),
+                  CoinDropdownField(
+                    coin: bitcoin,
+                    coinColor: Colors.white,
+                    coinDropdownColor: Color(0xFF1D3B53),
+                    coinList: kCryptoList,
+                    coinUpdateFunction: (coin) {
+                      setState(() {
+                        bitcoin = coin;
+                      });
+                    },
                   ),
-                  TextField(
-                    controller: bitcoinValue,
-                    keyboardType: TextInputType.number,
-                    onChanged: (value) {},
+                  ValueInputField(
+                    valueController: bitcoinValue,
+                    valueColor: Colors.white,
+                    valueConverter: (value) {
+                      setState(() {
+                        currencyValue.text = bitcoinValue.text;
+                      });
+                    },
                   ),
                 ],
               ),
@@ -70,41 +57,27 @@ class _ConverterScreenState extends State<ConverterScreen> {
             child: Container(
               color: Colors.white,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  DropdownButtonHideUnderline(
-                    child: DropdownButton(
-                      value: currency,
-                      icon: Icon(
-                        Icons.arrow_drop_down,
-                        color: Color(0xFF1D3B53),
-                        size: 40.0,
-                      ),
-                      onChanged: (String coin) {
-                        setState(() {
-                          currency = coin;
-                        });
-                      },
-                      items: kCurrenciesList
-                          .map<DropdownMenuItem<String>>((String coin) {
-                        return DropdownMenuItem<String>(
-                          value: coin,
-                          child: Text(
-                            coin,
-                            style: TextStyle(
-                              color: Color(0xFF1D3B53),
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        );
-                      }).toList(),
-                    ),
+                  CoinDropdownField(
+                    coin: currency,
+                    coinColor: Color(0xFF1D3B53),
+                    coinDropdownColor: Colors.white,
+                    coinList: kCurrenciesList,
+                    coinUpdateFunction: (coin) {
+                      setState(() {
+                        currency = coin;
+                      });
+                    },
                   ),
-                  TextField(
-                    controller: currencyValue,
-                    keyboardType: TextInputType.number,
-                    onChanged: (value) {},
+                  ValueInputField(
+                    valueController: currencyValue,
+                    valueColor: Color(0xFF1D3B53),
+                    valueConverter: (value) {
+                      setState(() {
+                        bitcoinValue.text = currencyValue.text;
+                      });
+                    },
                   ),
                 ],
               ),
