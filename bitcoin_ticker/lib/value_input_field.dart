@@ -18,7 +18,7 @@ class ValueInputField extends StatelessWidget {
       controller: valueController,
       style: TextStyle(
         color: valueColor,
-        fontSize: 40,
+        fontSize: 60,
       ),
       textAlign: TextAlign.center,
       cursorColor: valueColor,

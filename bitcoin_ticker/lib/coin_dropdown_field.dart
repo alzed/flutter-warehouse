@@ -24,7 +24,7 @@ class CoinDropdownField extends StatelessWidget {
         icon: Icon(
           Icons.arrow_drop_down,
           color: coinColor,
-          size: 40.0,
+          size: 50.0,
         ),
         dropdownColor: coinDropdownColor,
         onChanged: (String coin) {
@@ -37,7 +37,7 @@ class CoinDropdownField extends StatelessWidget {
               coin,
               style: TextStyle(
                 color: coinColor,
-                fontSize: 30.0,
+                fontSize: 45.0,
               ),
             ),
           );

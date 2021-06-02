@@ -19,6 +19,6 @@ class CoinConverter {
     }
     double exchangeRate = await getExchangeRate(base, quote);
     double convertedValue = value * exchangeRate;
-    return convertedValue.toStringAsPrecision(10);
+    return convertedValue.toStringAsPrecision(8);
   }
 }
