@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'coin_data.dart';
 import 'coin_dropdown_field.dart';
 import 'value_input_field.dart';
+import 'coin_converter.dart';
 
 class ConverterScreen extends StatefulWidget {
   const ConverterScreen({Key key}) : super(key: key);
@@ -17,6 +18,13 @@ class _ConverterScreenState extends State<ConverterScreen> {
 
   String bitcoin = kCryptoList[0];
   String currency = kCurrenciesList[0];
+
+  @override
+  void initState() {
+    super.initState();
+    bitcoinValue.text = '0';
+    currencyValue.text = '0';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,18 +43,23 @@ class _ConverterScreenState extends State<ConverterScreen> {
                     coinColor: Colors.white,
                     coinDropdownColor: Color(0xFF1D3B53),
                     coinList: kCryptoList,
-                    coinUpdateFunction: (coin) {
+                    coinUpdateFunction: (coin) async {
+                      String convertedValue = await CoinConverter()
+                          .getConvertedRate(coin, currency, bitcoinValue.text);
                       setState(() {
                         bitcoin = coin;
+                        currencyValue.text = convertedValue;
                       });
                     },
                   ),
                   ValueInputField(
                     valueController: bitcoinValue,
                     valueColor: Colors.white,
-                    valueConverter: (value) {
+                    valueConverter: (value) async {
+                      String convertedValue = await CoinConverter()
+                          .getConvertedRate(bitcoin, currency, value);
                       setState(() {
-                        currencyValue.text = bitcoinValue.text;
+                        currencyValue.text = convertedValue;
                       });
                     },
                   ),
@@ -66,18 +79,23 @@ class _ConverterScreenState extends State<ConverterScreen> {
                     coinColor: Color(0xFF1D3B53),
                     coinDropdownColor: Colors.white,
                     coinList: kCurrenciesList,
-                    coinUpdateFunction: (coin) {
+                    coinUpdateFunction: (coin) async {
+                      String convertedValue = await CoinConverter()
+                          .getConvertedRate(coin, bitcoin, currencyValue.text);
                       setState(() {
                         currency = coin;
+                        bitcoinValue.text = convertedValue;
                       });
                     },
                   ),
                   ValueInputField(
                     valueController: currencyValue,
                     valueColor: Color(0xFF1D3B53),
-                    valueConverter: (value) {
+                    valueConverter: (value) async {
+                      String convertedValue = await CoinConverter()
+                          .getConvertedRate(currency, bitcoin, value);
                       setState(() {
-                        bitcoinValue.text = currencyValue.text;
+                        bitcoinValue.text = convertedValue;
                       });
                     },
                   ),
