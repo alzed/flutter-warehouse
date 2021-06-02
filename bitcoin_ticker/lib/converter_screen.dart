@@ -26,6 +26,7 @@ class _ConverterScreenState extends State<ConverterScreen> {
           Expanded(
             child: Container(
               color: Color(0xFF1D3B53),
+              padding: EdgeInsets.symmetric(vertical: 50.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -56,6 +57,7 @@ class _ConverterScreenState extends State<ConverterScreen> {
           Expanded(
             child: Container(
               color: Colors.white,
+              padding: EdgeInsets.symmetric(vertical: 50.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
