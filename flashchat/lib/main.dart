@@ -1,6 +1,7 @@
-import 'package:flashchat/sign_in_screen.dart';
-import 'package:flashchat/welcome_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'sign_in_screen.dart';
+import 'welcome_screen.dart';
 
 void main() {
   runApp(FlashChat());
