@@ -3,7 +3,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 
 import 'login_screen.dart';
 import 'signin_screen.dart';
-import 'auth_button.dart';
+import '../components/auth_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key key}) : super(key: key);
