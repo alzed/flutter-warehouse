@@ -19,9 +19,9 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-    currentUser = _auth.currentUser;
-    if (currentUser != null) {
-      print(currentUser.uid);
+    final user = _auth.currentUser;
+    if (user != null) {
+      currentUser = user;
     }
   }
 
@@ -54,6 +54,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       TextButton(
                         child: Text('Yes'),
                         onPressed: () {
+                          _auth.signOut();
                           Navigator.pushNamed(context, LoginScreen.id);
                         },
                       ),
