@@ -28,8 +28,6 @@ class _SignupScreenState extends State<SignupScreen> {
                 size: 120.0,
               ),
             ),
-            Form(
-              child: Column(
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: AuthForm(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../components/auth_button.dart';
+import '../components/auth_form.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
@@ -28,18 +28,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 size: 120.0,
               ),
             ),
-            Form(
-              child: Column(
-                children: [
-                  TextField(),
-                  TextField(),
-                ],
-              ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: AuthForm(type: 'login'),
             ),
-            AuthButton(
-              content: 'Log In',
-              onPressed: () {},
-            )
           ],
         ),
       ),
