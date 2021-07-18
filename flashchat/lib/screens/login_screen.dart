@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flashchat/screens/chat_screen.dart';
 
+import 'package:flashchat/screens/chat_screen.dart';
 import 'package:flashchat/components/auth_button.dart';
 import 'package:flashchat/components/email_form_field.dart';
 import 'package:flashchat/components/password_form_field.dart';
