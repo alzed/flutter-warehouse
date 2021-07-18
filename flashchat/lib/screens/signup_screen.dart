@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-import '../components/auth_form.dart';
+import 'chat_screen.dart';
+import 'package:flashchat/components/email_form_field.dart';
+import 'package:flashchat/components/password_form_field.dart';
+import 'package:flashchat/components/auth_button.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key key}) : super(key: key);
@@ -12,6 +16,12 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final _auth = FirebaseAuth.instance;
+
+  String email;
+  String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,10 +38,49 @@ class _SignupScreenState extends State<SignupScreen> {
                 size: 120.0,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: AuthForm(
-                type: 'signup',
+            Form(
+              key: _formKey,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    EmailFormField(
+                      onChanged: (value) {
+                        email = value;
+                      },
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    PasswordFormField(
+                      onChanged: (value) {
+                        password = value;
+                      },
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    AuthButton(
+                      content: 'Sign up',
+                      color: Colors.indigo,
+                      onPressed: () async {
+                        if (_formKey.currentState.validate()) {
+                          try {
+                            final user =
+                                await _auth.createUserWithEmailAndPassword(
+                                    email: email, password: password);
+                            if (user != null) {
+                              Navigator.pushNamed(context, ChatScreen.id);
+                            }
+                          } catch (e) {
+                            print(e);
+                          }
+                        }
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
