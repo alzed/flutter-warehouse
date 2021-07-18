@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../components/auth_button.dart';
+import '../components/auth_form.dart';
 
-class SigninScreen extends StatefulWidget {
-  const SigninScreen({Key key}) : super(key: key);
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({Key key}) : super(key: key);
 
-  static String id = 'signin_screen';
+  static String id = 'signup_screen';
 
   @override
-  _SigninScreenState createState() => _SigninScreenState();
+  _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _SigninScreenState extends State<SigninScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,16 +30,12 @@ class _SigninScreenState extends State<SigninScreen> {
             ),
             Form(
               child: Column(
-                children: [
-                  TextField(),
-                  TextField(),
-                ],
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: AuthForm(
+                type: 'signup',
               ),
             ),
-            AuthButton(
-              content: 'Sign In',
-              onPressed: () {},
-            )
           ],
         ),
       ),

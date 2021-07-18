@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'screens/welcome_screen.dart';
-import 'screens/signin_screen.dart';
+import 'screens/signup_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/chat_screen.dart';
 
@@ -19,7 +19,7 @@ class FlashChat extends StatelessWidget {
       initialRoute: WelcomeScreen.id,
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
-        SigninScreen.id: (context) => SigninScreen(),
+        SignupScreen.id: (context) => SignupScreen(),
         LoginScreen.id: (context) => LoginScreen(),
         ChatScreen.id: (context) => LoginScreen(),
       },
