@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flashchat/screens/chat_screen.dart';
 
 import 'auth_button.dart';
 import 'email_form_field.dart';
@@ -57,6 +58,9 @@ class _AuthFormState extends State<AuthForm> {
                   try {
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
+                    if (newUser != null) {
+                      Navigator.pushNamed(context, ChatScreen.id);
+                    }
                   } catch (e) {
                     print(e);
                   }
