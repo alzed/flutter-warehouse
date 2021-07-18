@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 import 'package:flashchat/screens/chat_screen.dart';
 import 'package:flashchat/components/auth_button.dart';
@@ -19,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _auth = FirebaseAuth.instance;
 
+  bool showSpinner = false;
   String email;
   String password;
 
@@ -26,62 +28,72 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Hero(
-              tag: 'logo',
-              child: Icon(
-                Icons.flash_on,
-                color: Colors.yellow.shade600,
-                size: 120.0,
-              ),
-            ),
-            Form(
-              key: _formKey,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    EmailFormField(
-                      onChanged: (value) {
-                        email = value;
-                      },
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    PasswordFormField(
-                      onChanged: (value) {
-                        password = value;
-                      },
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    AuthButton(
-                      content: 'Log in',
-                      onPressed: () async {
-                        if (_formKey.currentState.validate()) {
-                          try {
-                            final user = await _auth.signInWithEmailAndPassword(
-                                email: email, password: password);
-                            if (user != null) {
-                              Navigator.pushNamed(context, ChatScreen.id);
-                            }
-                          } catch (e) {
-                            print(e);
-                          }
-                        }
-                      },
-                    ),
-                  ],
+        child: ModalProgressHUD(
+          inAsyncCall: showSpinner,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Hero(
+                tag: 'logo',
+                child: Icon(
+                  Icons.flash_on,
+                  color: Colors.yellow.shade600,
+                  size: 120.0,
                 ),
               ),
-            ),
-          ],
+              Form(
+                key: _formKey,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      EmailFormField(
+                        onChanged: (value) {
+                          email = value;
+                        },
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      PasswordFormField(
+                        onChanged: (value) {
+                          password = value;
+                        },
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      AuthButton(
+                        content: 'Log in',
+                        onPressed: () async {
+                          if (_formKey.currentState.validate()) {
+                            setState(() {
+                              showSpinner = true;
+                            });
+                            try {
+                              final user =
+                                  await _auth.signInWithEmailAndPassword(
+                                      email: email, password: password);
+                              if (user != null) {
+                                Navigator.pushNamed(context, ChatScreen.id);
+                              }
+                              setState(() {
+                                showSpinner = false;
+                              });
+                            } catch (e) {
+                              print(e);
+                            }
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
