@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 import 'login_screen.dart';
-import 'signin_screen.dart';
+import 'signup_screen.dart';
 import '../components/auth_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -65,7 +65,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   ),
                 ),
                 AnimatedTextKit(
-                  pause: Duration(seconds: 2),
+                  pause: Duration(milliseconds: 2000),
                   animatedTexts: [
                     TypewriterAnimatedText(
                       'Flashchat',
@@ -88,9 +88,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             ),
             AuthButton(
               color: Colors.indigo,
-              content: 'Sign In',
+              content: 'Sign Up',
               onPressed: () {
-                Navigator.of(context).pushNamed(SigninScreen.id);
+                Navigator.of(context).pushNamed(SignupScreen.id);
               },
             ),
           ],
