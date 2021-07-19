@@ -66,7 +66,28 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ],
       ),
-      body: Container(),
+      backgroundColor: Colors.blueGrey.shade200,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              border: OutlineInputBorder(
+                borderSide: BorderSide.none,
+              ),
+              hintText: 'Type your message ...',
+              prefixIcon: Icon(Icons.emoji_emotions_outlined),
+              suffixIcon: IconButton(
+                icon: Icon(Icons.send),
+                onPressed: () {},
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
