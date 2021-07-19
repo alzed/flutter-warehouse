@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flashchat/screens/login_screen.dart';
 
@@ -14,7 +15,10 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
+
   User loggedInUser;
+  TextEditingController _controller;
 
   @override
   void initState() {
@@ -23,7 +27,16 @@ class _ChatScreenState extends State<ChatScreen> {
     if (currentUser != null) {
       loggedInUser = currentUser;
     }
+    _controller = TextEditingController();
   }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  List<Widget> messages = [];
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +84,11 @@ class _ChatScreenState extends State<ChatScreen> {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          Column(
+            children: messages,
+          ),
           TextField(
+            controller: _controller,
             decoration: InputDecoration(
               filled: true,
               fillColor: Colors.white,
@@ -82,7 +99,17 @@ class _ChatScreenState extends State<ChatScreen> {
               prefixIcon: Icon(Icons.emoji_emotions_outlined),
               suffixIcon: IconButton(
                 icon: Icon(Icons.send),
-                onPressed: () {},
+                onPressed: () {
+                  _firestore.collection('messages').add({
+                    'text': _controller.text,
+                    'sender': loggedInUser.email,
+                    'timestamp': DateTime.now()
+                  });
+                  setState(() {
+                    messages.add(Text(_controller.text));
+                    _controller.clear();
+                  });
+                },
               ),
             ),
           ),
