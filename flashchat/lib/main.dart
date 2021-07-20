@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'screens/welcome_screen.dart';
 import 'screens/signup_screen.dart';
@@ -9,8 +10,35 @@ void main() {
   runApp(FlashChat());
 }
 
-class FlashChat extends StatelessWidget {
+class FlashChat extends StatefulWidget {
   const FlashChat({Key key}) : super(key: key);
+
+  @override
+  _FlashChatState createState() => _FlashChatState();
+}
+
+class _FlashChatState extends State<FlashChat> {
+  bool _initialized = false;
+  bool _error = false;
+
+  void initializeFlutterFire() async {
+    try {
+      await Firebase.initializeApp();
+      setState(() {
+        _initialized = true;
+      });
+    } catch (e) {
+      setState(() {
+        _error = true;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    initializeFlutterFire();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
