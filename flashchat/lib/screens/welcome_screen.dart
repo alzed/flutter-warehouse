@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flashchat/components/auth_button.dart';
 import 'login_screen.dart';
@@ -20,25 +19,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   AnimationController controller;
   Animation animation;
 
-  bool _initialized = false;
-  bool _error = false;
-
-  void initializeFlutterFire() async {
-    try {
-      await Firebase.initializeApp();
-      setState(() {
-        _initialized = true;
-      });
-    } catch (e) {
-      setState(() {
-        _error = true;
-      });
-    }
-  }
-
   @override
   void initState() {
-    initializeFlutterFire();
     super.initState();
 
     controller = AnimationController(
