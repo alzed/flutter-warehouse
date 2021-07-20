@@ -42,9 +42,12 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.flash_on,
-          color: Colors.yellow.shade600,
+        leading: Hero(
+          tag: 'logo',
+          child: Icon(
+            Icons.flash_on,
+            color: Colors.yellow.shade600,
+          ),
         ),
         title: Text('Chat'),
         actions: [
@@ -84,8 +87,10 @@ class _ChatScreenState extends State<ChatScreen> {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Column(
-            children: messages,
+          Expanded(
+            child: Column(
+              children: messages,
+            ),
           ),
           TextField(
             controller: _controller,
