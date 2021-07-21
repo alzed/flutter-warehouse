@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flashchat/screens/login_screen.dart';
 
+final _firestore = FirebaseFirestore.instance;
+
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key key}) : super(key: key);
 
@@ -15,7 +17,6 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
-  final _firestore = FirebaseFirestore.instance;
 
   User loggedInUser;
   TextEditingController _controller;
@@ -36,8 +37,6 @@ class _ChatScreenState extends State<ChatScreen> {
     super.dispose();
   }
 
-  List<Widget> messages = [];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +48,7 @@ class _ChatScreenState extends State<ChatScreen> {
             color: Colors.yellow.shade600,
           ),
         ),
-        title: Text('Chat'),
+        title: Text(loggedInUser.email),
         actions: [
           IconButton(
             icon: Icon(Icons.exit_to_app),
@@ -88,9 +87,7 @@ class _ChatScreenState extends State<ChatScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: Column(
-              children: messages,
-            ),
+            child: MessageStream(),
           ),
           TextField(
             controller: _controller,
@@ -111,7 +108,6 @@ class _ChatScreenState extends State<ChatScreen> {
                     'timestamp': DateTime.now()
                   });
                   setState(() {
-                    messages.add(Text(_controller.text));
                     _controller.clear();
                   });
                 },
@@ -120,6 +116,33 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class MessageStream extends StatelessWidget {
+  const MessageStream({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: _firestore.collection('messages').snapshots(),
+      builder: (context, snapshots) {
+        if (!snapshots.hasData) {
+          return Text('Loading ...');
+        }
+        final messages = snapshots.data.docs;
+        List<Text> messageTexts = [];
+        messages.forEach((element) {
+          print(element['text']);
+          messageTexts.add(Text(element['text']));
+        });
+        return Column(
+          children: messageTexts,
+        );
+      },
     );
   }
 }
