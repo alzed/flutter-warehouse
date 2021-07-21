@@ -105,7 +105,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   _firestore.collection('messages').add({
                     'text': _controller.text,
                     'sender': loggedInUser.email,
-                    'timestamp': DateTime.now()
+                    'time': DateTime.now()
                   });
                   setState(() {
                     _controller.clear();
@@ -131,18 +131,62 @@ class MessageStream extends StatelessWidget {
       stream: _firestore.collection('messages').snapshots(),
       builder: (context, snapshots) {
         if (!snapshots.hasData) {
-          return Text('Loading ...');
+          return Center(
+            child: CircularProgressIndicator(
+              backgroundColor: Colors.white30,
+            ),
+          );
         }
         final messages = snapshots.data.docs;
-        List<Text> messageTexts = [];
+        List<Widget> messageTexts = [];
         messages.forEach((element) {
-          print(element['text']);
-          messageTexts.add(Text(element['text']));
+          messageTexts.add(MessageBubble(
+            text: element['text'],
+            sender: element['sender'],
+            time: element['time'],
+          ));
         });
-        return Column(
+        return ListView(
           children: messageTexts,
         );
       },
+    );
+  }
+}
+
+class MessageBubble extends StatelessWidget {
+  const MessageBubble({
+    Key key,
+    @required this.text,
+    @required this.sender,
+    @required this.time,
+  }) : super(key: key);
+
+  final String text;
+  final String sender;
+  final Timestamp time;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          sender,
+          style: TextStyle(color: Colors.black54, fontSize: 10.0),
+        ),
+        Material(
+          color: Colors.blue,
+          child: Row(
+            children: [
+              Text(
+                text,
+                style: TextStyle(color: Colors.white),
+              ),
+              Text(time.toDate().toString()),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
