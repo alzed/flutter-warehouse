@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MessageBubble extends StatelessWidget {
@@ -27,8 +28,12 @@ class MessageBubble extends StatelessWidget {
             sender,
             style: TextStyle(color: Colors.black54, fontSize: 15.0),
           ),
+          SizedBox(
+            height: 5.0,
+          ),
           Material(
-            color: isMe ? Colors.blue : Colors.indigo,
+            color: isMe ? Colors.blue : Colors.blueAccent.shade700,
+            elevation: 5.0,
             borderRadius: isMe
                 ? BorderRadiusDirectional.only(
                     topStart: Radius.circular(20.0),
@@ -41,16 +46,26 @@ class MessageBubble extends StatelessWidget {
                     bottomEnd: Radius.circular(20.0),
                   ),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(10.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
                     text,
-                    style: TextStyle(color: Colors.white, fontSize: 20.0),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 7.5,
                   ),
                   Text(
                     time.toDate().toString().substring(11, 16),
-                    style: TextStyle(color: Colors.white54),
+                    style: TextStyle(
+                      color: Colors.white54,
+                      fontSize: 12.0,
+                    ),
                   ),
                 ],
               ),
