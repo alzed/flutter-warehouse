@@ -32,7 +32,7 @@ class MessageBubble extends StatelessWidget {
             height: 5.0,
           ),
           Material(
-            color: isMe ? Colors.blue : Colors.blueAccent.shade700,
+            color: isMe ? Colors.blue : Colors.blue.shade900,
             elevation: 5.0,
             borderRadius: isMe
                 ? BorderRadiusDirectional.only(
