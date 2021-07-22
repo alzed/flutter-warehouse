@@ -150,6 +150,8 @@ class MessageStream extends StatelessWidget {
         return Expanded(
           child: ListView(
             reverse: true,
+            padding:
+                const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
             children: messageTexts,
           ),
         );
