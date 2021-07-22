@@ -6,6 +6,7 @@ import 'package:flashchat/screens/login_screen.dart';
 import 'package:flashchat/components/message_bubble.dart';
 
 final _firestore = FirebaseFirestore.instance;
+User loggedInUser;
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key key}) : super(key: key);
@@ -19,7 +20,6 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
 
-  User loggedInUser;
   TextEditingController _controller;
 
   @override
@@ -86,7 +86,7 @@ class _ChatScreenState extends State<ChatScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          MessageStream(user: loggedInUser.email),
+          MessageStream(),
           TextField(
             controller: _controller,
             autofocus: true,
@@ -123,10 +123,7 @@ class _ChatScreenState extends State<ChatScreen> {
 class MessageStream extends StatelessWidget {
   const MessageStream({
     Key key,
-    @required this.user,
   }) : super(key: key);
-
-  final String user;
 
   @override
   Widget build(BuildContext context) {
@@ -147,7 +144,7 @@ class MessageStream extends StatelessWidget {
             text: element['text'],
             sender: element['sender'],
             time: element['time'],
-            isMe: element['sender'] == user,
+            isMe: element['sender'] == loggedInUser.email,
           ));
         });
         return Expanded(
