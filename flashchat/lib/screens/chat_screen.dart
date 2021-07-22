@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flashchat/screens/login_screen.dart';
+import 'package:flashchat/components/message_bubble.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -84,18 +85,17 @@ class _ChatScreenState extends State<ChatScreen> {
       backgroundColor: Colors.blueGrey.shade200,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(
-            child: MessageStream(),
-          ),
+          MessageStream(user: loggedInUser.email),
           TextField(
             controller: _controller,
+            autofocus: true,
             decoration: InputDecoration(
               filled: true,
               fillColor: Colors.white,
               border: OutlineInputBorder(
                 borderSide: BorderSide.none,
+                borderRadius: BorderRadius.zero,
               ),
               hintText: 'Type your message ...',
               prefixIcon: Icon(Icons.emoji_emotions_outlined),
@@ -123,12 +123,15 @@ class _ChatScreenState extends State<ChatScreen> {
 class MessageStream extends StatelessWidget {
   const MessageStream({
     Key key,
+    @required this.user,
   }) : super(key: key);
+
+  final String user;
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: _firestore.collection('messages').snapshots(),
+      stream: _firestore.collection('messages').orderBy('time').snapshots(),
       builder: (context, snapshots) {
         if (!snapshots.hasData) {
           return Center(
@@ -137,56 +140,23 @@ class MessageStream extends StatelessWidget {
             ),
           );
         }
-        final messages = snapshots.data.docs;
+        final messages = snapshots.data.docs.reversed;
         List<Widget> messageTexts = [];
         messages.forEach((element) {
           messageTexts.add(MessageBubble(
             text: element['text'],
             sender: element['sender'],
             time: element['time'],
+            isMe: element['sender'] == user,
           ));
         });
-        return ListView(
-          children: messageTexts,
+        return Expanded(
+          child: ListView(
+            reverse: true,
+            children: messageTexts,
+          ),
         );
       },
-    );
-  }
-}
-
-class MessageBubble extends StatelessWidget {
-  const MessageBubble({
-    Key key,
-    @required this.text,
-    @required this.sender,
-    @required this.time,
-  }) : super(key: key);
-
-  final String text;
-  final String sender;
-  final Timestamp time;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          sender,
-          style: TextStyle(color: Colors.black54, fontSize: 10.0),
-        ),
-        Material(
-          color: Colors.blue,
-          child: Row(
-            children: [
-              Text(
-                text,
-                style: TextStyle(color: Colors.white),
-              ),
-              Text(time.toDate().toString()),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }
