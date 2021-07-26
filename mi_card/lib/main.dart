@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
               SizedBox(
                 height: 20.0,
               ),
-              Text('Awesome Triangles',
+              Text('alzed',
                   style: GoogleFonts.merienda(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
