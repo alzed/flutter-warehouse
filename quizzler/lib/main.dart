@@ -64,20 +64,21 @@ class _QuizPageState extends State<QuizPage> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-            title: Text('Quiz Completed!'),
-            content: Text('Your score is $score'),
-            actions: [
-              TextButton(
-                child: Text('Done'),
-                onPressed: () {
-                  setState(() {
-                    scoreBoard.clear();
-                    score = 0;
-                    Navigator.pop(context);
-                  });
-                },
-              ),
-            ]);
+          title: Text('Quiz Completed!'),
+          content: Text('Your score is $score'),
+          actions: [
+            TextButton(
+              child: Text('Done'),
+              onPressed: () {
+                setState(() {
+                  scoreBoard.clear();
+                  score = 0;
+                  Navigator.pop(context);
+                });
+              },
+            ),
+          ],
+        );
       },
     );
   }
