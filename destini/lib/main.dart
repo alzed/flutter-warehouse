@@ -60,6 +60,8 @@ class _StoryPageState extends State<StoryPage> {
                   style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.red),
+                    overlayColor:
+                        MaterialStateProperty.all<Color>(Colors.white30),
                   ),
                   child: Text(
                     storyBrain.getChoice1(),
@@ -67,6 +69,7 @@ class _StoryPageState extends State<StoryPage> {
                       fontSize: 20.0,
                       color: Colors.white,
                     ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ),
@@ -87,6 +90,8 @@ class _StoryPageState extends State<StoryPage> {
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.blue),
+                      overlayColor:
+                          MaterialStateProperty.all<Color>(Colors.white30),
                     ),
                     child: Text(
                       storyBrain.getChoice2(),
@@ -94,6 +99,7 @@ class _StoryPageState extends State<StoryPage> {
                         fontSize: 20.0,
                         color: Colors.white,
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
