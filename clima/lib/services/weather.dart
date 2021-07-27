@@ -1,13 +1,13 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-const weatherApi = 'REPLACE_WEATHERBIT_API_KEY';
+import 'package:clima/secrets.dart';
 
 class Weather {
   Future<dynamic> getWeather(double latitude, double longitude) async {
     http.Response response =
         await http.get(Uri.https('api.weatherbit.io', '/v2.0/current', {
-      'key': weatherApi,
+      'key': weatherBitApiKey,
       'lat': latitude.toString(),
       'lon': longitude.toString(),
     }));
@@ -21,7 +21,7 @@ class Weather {
   Future<dynamic> getWeatherLocation(String location) async {
     http.Response response =
         await http.get(Uri.https('api.weatherbit.io', '/v2.0/current', {
-      'key': weatherApi,
+      'key': weatherBitApiKey,
       'city': location,
     }));
 
