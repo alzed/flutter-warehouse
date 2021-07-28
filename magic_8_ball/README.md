@@ -2,15 +2,8 @@
 
 Magic 8 ball guesser flutter application .
 
-## Getting Started
+This project is a part of [The Complete 2021 Flutter Development Bootcamp with Dart](https://www.udemy.com/course/flutter-bootcamp-with-dart/) Udemy course.
 
-This project is a starting point for a Flutter application.
+<img src="https://user-images.githubusercontent.com/27342390/127378490-e544654f-1df7-4fcd-82e9-a2c7544a8656.png" width="200" height="450">
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://user-images.githubusercontent.com/27342390/127378505-ac64ef32-f9d7-4882-ae9a-2b863021183b.gif" width="200" height="450">

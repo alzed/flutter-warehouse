@@ -2,15 +2,13 @@
 
 A quiz application in flutter.
 
-## Getting Started
+This project is a part of [The Complete 2021 Flutter Development Bootcamp with Dart](https://www.udemy.com/course/flutter-bootcamp-with-dart/) Udemy course.
 
-This project is a starting point for a Flutter application.
+<img src="https://user-images.githubusercontent.com/27342390/127380012-631c029c-73fe-4179-b275-704f4027033f.png" width="200" height="450">
 
-A few resources to get you started if this is your first Flutter project:
+<img src="https://user-images.githubusercontent.com/27342390/127380021-dc97f8c4-a8c0-438e-b200-e084766f7c1e.png" width="200" height="450">
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<img src="https://user-images.githubusercontent.com/27342390/127380037-5f0b7a18-0b62-4a19-a54b-1204407c7ab8.png" width="200" height="450">
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+<img src="https://user-images.githubusercontent.com/27342390/127380109-6a3e98e0-c6c8-42e2-8e7b-dc66f4389987.gif" width="200" height="450">

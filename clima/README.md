@@ -2,15 +2,10 @@
 
 A new Flutter application.
 
-## Getting Started
+This project is a part of [The Complete 2021 Flutter Development Bootcamp with Dart](https://www.udemy.com/course/flutter-bootcamp-with-dart/) Udemy course.
 
-This project is a starting point for a Flutter application.
+<img src="https://user-images.githubusercontent.com/27342390/127381464-08620d1a-b1b1-4b2c-aff7-e1de1a2d6eb9.png" width="200" height="450">
 
-A few resources to get you started if this is your first Flutter project:
+<img src="https://user-images.githubusercontent.com/27342390/127381476-3a5aa659-a171-4455-84d1-11546a25fc4c.png" width="200" height="450">
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
