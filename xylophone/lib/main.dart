@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 void main() => runApp(XylophoneApp());
 
 class XylophoneApp extends StatelessWidget {
-  void playAudio(int audioId) {
-    final player = AudioCache();
-    player.play('note$audioId.wav');
-  }
+  static AudioCache player = AudioCache();
 
   Expanded buildKey({color, audioId}) {
     return Expanded(
       child: TextButton(
-        onPressed: () => playAudio(audioId),
+        style: ButtonStyle(
+          overlayColor: MaterialStateProperty.all(Colors.white30),
+        ),
+        onPressed: () {
+          player.play('note$audioId.wav');
+        },
         child: Container(
           color: color,
         ),

@@ -10,23 +10,24 @@ class BottomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPress,
-      child: Container(
-        margin: EdgeInsets.only(top: 10.0),
-        padding: EdgeInsets.all(20.0),
-        width: double.infinity,
-        color: kBottomContainerColor,
-        child: Center(
-          child: Text(
-            buttonText,
-            style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 3.0,
-            ),
+    return ElevatedButton(
+      onPressed: onPress,
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(2.0),
           ),
         ),
+        backgroundColor: MaterialStateProperty.all(kBottomContainerColor),
+      ),
+      child: Text(
+        buttonText,
+        style: TextStyle(
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 3.0,
+        ),
+        textAlign: TextAlign.center,
       ),
     );
   }

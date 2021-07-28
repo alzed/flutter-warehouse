@@ -29,15 +29,18 @@ class _BallPageState extends State<BallPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: TextButton(
-        child: Image.asset('images/ball$ballId.png'),
-        onPressed: () {
-          setState(() {
-            ballId = Random().nextInt(4) + 1;
-          });
-        },
+    return TextButton(
+      style: ButtonStyle(
+        overlayColor: MaterialStateProperty.all(Colors.grey.shade200),
       ),
+      child: Center(
+        child: Image.asset('images/ball$ballId.png'),
+      ),
+      onPressed: () {
+        setState(() {
+          ballId = Random().nextInt(4) + 1;
+        });
+      },
     );
   }
 }

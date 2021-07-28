@@ -21,12 +21,14 @@ class Category extends StatelessWidget {
         child: InkWell(
           onTap: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => ConverterRoute(
-                          category: text,
-                          color: color,
-                        )));
+              context,
+              MaterialPageRoute(
+                builder: (context) => ConverterScreen(
+                  category: text,
+                  color: color,
+                ),
+              ),
+            );
           },
           borderRadius: BorderRadius.circular(borderRadius),
           highlightColor: color,
@@ -42,12 +44,13 @@ class Category extends StatelessWidget {
                 ),
               ),
               Center(
-                  child: Text(
-                text,
-                style: TextStyle(
-                  fontSize: 24.0,
+                child: Text(
+                  text,
+                  style: TextStyle(
+                    fontSize: 24.0,
+                  ),
                 ),
-              )),
+              ),
             ],
           ),
         ),

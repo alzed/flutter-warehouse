@@ -33,6 +33,9 @@ class _DicePageState extends State<DicePage> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
+      style: ButtonStyle(
+        overlayColor: MaterialStateProperty.all(Colors.white30),
+      ),
       onPressed: () {
         setState(() {
           leftDiceId = Random().nextInt(6) + 1;
@@ -44,6 +47,9 @@ class _DicePageState extends State<DicePage> {
           children: [
             Expanded(
               child: TextButton(
+                style: ButtonStyle(
+                  overlayColor: MaterialStateProperty.all(Colors.white30),
+                ),
                 onPressed: () {
                   setState(() {
                     leftDiceId = Random().nextInt(6) + 1;
@@ -54,6 +60,9 @@ class _DicePageState extends State<DicePage> {
             ),
             Expanded(
               child: TextButton(
+                style: ButtonStyle(
+                  overlayColor: MaterialStateProperty.all(Colors.white30),
+                ),
                 onPressed: () {
                   setState(() {
                     rightDiceId = Random().nextInt(6) + 1;

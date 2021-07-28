@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.blueGrey[900],
         body: SafeArea(
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
               SizedBox(
                 height: 20.0,
               ),
-              Text('Awesome Triangles',
+              Text('alzed',
                   style: GoogleFonts.merienda(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
