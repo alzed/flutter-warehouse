@@ -2,15 +2,10 @@
 
 A Xylophone Flutter application.
 
-## Getting Started
+This project is a part of [The Complete 2021 Flutter Development Bootcamp with Dart](https://www.udemy.com/course/flutter-bootcamp-with-dart/) Udemy course.
 
-This project is a starting point for a Flutter application.
+<img src="https://user-images.githubusercontent.com/27342390/127377626-f6541c30-84e4-407a-8da4-839bf609d422.jpg" width="200" height="450">
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+https://user-images.githubusercontent.com/27342390/127377722-c55b9637-404d-4aa7-8e73-8c143866d100.mp4
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
