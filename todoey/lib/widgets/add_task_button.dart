@@ -14,10 +14,7 @@ class AddTaskButton extends StatelessWidget {
         showModalBottomSheet(
           context: context,
           isScrollControlled: true,
-          builder: (context) => Container(
-            padding: EdgeInsets.all(20.0),
-            child: Text('Add task'),
-          ),
+          builder: (context) => AddTaskScreen(),
         );
       },
     );
