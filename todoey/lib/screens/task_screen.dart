@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:todoey/widgets/task_tile.dart';
+
 class TaskScreen extends StatelessWidget {
   const TaskScreen({Key? key}) : super(key: key);
 
@@ -53,36 +55,9 @@ class TaskScreen extends StatelessWidget {
                     ListView(
                       shrinkWrap: true,
                       children: [
-                        ListTile(
-                          title: Text('Task1'),
-                          trailing: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.check_box_outline_blank,
-                              color: Color(0xFF004080),
-                            ),
-                          ),
-                        ),
-                        ListTile(
-                          title: Text('Task2'),
-                          trailing: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.check_box_outline_blank,
-                              color: Color(0xFF004080),
-                            ),
-                          ),
-                        ),
-                        ListTile(
-                          title: Text('Task3'),
-                          trailing: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.check_box_outline_blank,
-                              color: Color(0xFF004080),
-                            ),
-                          ),
-                        ),
+                        TaskTile(task: 'Task 1'),
+                        TaskTile(task: 'Task 2'),
+                        TaskTile(task: 'Task 3'),
                       ],
                     ),
                   ],
