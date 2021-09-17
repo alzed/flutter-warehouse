@@ -12,12 +12,11 @@ class TaskTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(task),
-      trailing: IconButton(
-        onPressed: () {},
-        icon: Icon(
-          Icons.check_box_outline_blank,
-          color: Color(0xFF004080),
-        ),
+      trailing: Checkbox(
+        value: false,
+        onChanged: (isDone) {},
+        fillColor: MaterialStateProperty.all(Color(0xFF004080)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3.0)),
       ),
     );
   }
