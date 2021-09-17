@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:todoey/widgets/add_task_button.dart';
 import 'package:todoey/widgets/task_tile.dart';
 
 class TaskScreen extends StatelessWidget {
@@ -9,6 +10,7 @@ class TaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF004080),
+      floatingActionButton: AddTaskButton(),
       body: SafeArea(
         child: Column(
           children: [
