@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:todoey/models/task.dart';
 import 'task_tile.dart';
 
 class TaskList extends StatefulWidget {
@@ -12,20 +13,24 @@ class TaskList extends StatefulWidget {
 }
 
 class _TaskListState extends State<TaskList> {
+  List<Task> tasks = [
+    Task(title: 'Task 1'),
+    Task(title: 'Task 2'),
+    Task(title: 'Task 3'),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text('You have 0 tasks'),
-        ListView(
+        Text('You have ${tasks.length} tasks'),
+        ListView.builder(
           shrinkWrap: true,
-          children: [
-            TaskTile(task: 'Task 1'),
-            TaskTile(task: 'Task 2'),
-            TaskTile(task: 'Task 3'),
-          ],
+          itemCount: tasks.length,
+          itemBuilder: (context, int index) {
+            return TaskTile(task: tasks[index].title);
+          },
         ),
       ],
     );
