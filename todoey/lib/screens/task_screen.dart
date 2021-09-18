@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:todoey/widgets/add_task_button.dart';
-import 'package:todoey/widgets/task_tile.dart';
+import 'package:todoey/widgets/task_list.dart';
 
 class TaskScreen extends StatelessWidget {
   const TaskScreen({Key? key}) : super(key: key);
@@ -50,20 +50,7 @@ class TaskScreen extends StatelessWidget {
                   ),
                 ),
                 padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text('You have 0 tasks'),
-                    ListView(
-                      shrinkWrap: true,
-                      children: [
-                        TaskTile(task: 'Task 1'),
-                        TaskTile(task: 'Task 2'),
-                        TaskTile(task: 'Task 3'),
-                      ],
-                    ),
-                  ],
-                ),
+                child: TaskList(),
               ),
             ),
           ],
