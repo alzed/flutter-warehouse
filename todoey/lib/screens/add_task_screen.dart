@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
 
 class AddTaskScreen extends StatefulWidget {
-  const AddTaskScreen({Key? key}) : super(key: key);
+  const AddTaskScreen({Key? key, required this.addTaskCallback})
+      : super(key: key);
+
+  final Function addTaskCallback;
 
   @override
   State<AddTaskScreen> createState() => _AddTaskScreenState();
 }
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
+  final controller = TextEditingController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final controller = TextEditingController();
-
     return SingleChildScrollView(
       child: Container(
         color: Colors.black54,
@@ -37,22 +46,23 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
                     icon: Icon(
                       Icons.clear,
                       color: Color(0xFF004080),
                     ),
-                  ),
-                  IconButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
+                  ),
+                  IconButton(
                     icon: Icon(
                       Icons.check,
                       color: Color(0xFF004080),
                     ),
+                    onPressed: () {
+                      widget.addTaskCallback(controller.text);
+                      Navigator.of(context).pop();
+                    },
                   )
                 ],
               )

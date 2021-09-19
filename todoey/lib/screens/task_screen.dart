@@ -22,7 +22,13 @@ class _TaskScreenState extends State<TaskScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF004080),
-      floatingActionButton: AddTaskButton(),
+      floatingActionButton: AddTaskButton(
+        addTaskCallback: (String task) {
+          setState(() {
+            tasks.add(Task(title: task));
+          });
+        },
+      ),
       body: SafeArea(
         child: Column(
           children: [
