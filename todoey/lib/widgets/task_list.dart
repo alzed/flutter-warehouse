@@ -29,7 +29,15 @@ class _TaskListState extends State<TaskList> {
           shrinkWrap: true,
           itemCount: tasks.length,
           itemBuilder: (context, int index) {
-            return TaskTile(task: tasks[index].title);
+            return TaskTile(
+              task: tasks[index].title,
+              isChecked: tasks[index].isDone,
+              checkboxCallback: (bool? value) {
+                setState(() {
+                  tasks[index].toggleDone();
+                });
+              },
+            );
           },
         ),
       ],
