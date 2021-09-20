@@ -2,7 +2,7 @@
 
 A new Flutter application.
 
-This project is a part of [The Complete 2021 Flutter Development Bootcamp with Dart](https://www.udemy.com/course/flutter-bootcamp-with-dart/) Udemy course.
+This project is a part of [The Complete 2021 Flutter Development Bootcamp with Dart](https://www.udemy.com/course/flutter-bootcamp-with-dart/) Udemy course with modified UI.
 
 <img src="https://user-images.githubusercontent.com/27342390/127381464-08620d1a-b1b1-4b2c-aff7-e1de1a2d6eb9.png" width="200" height="450">
 
