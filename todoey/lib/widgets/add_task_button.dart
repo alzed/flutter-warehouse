@@ -3,12 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:todoey/screens/add_task_screen.dart';
 
 class AddTaskButton extends StatelessWidget {
-  const AddTaskButton({
-    Key? key,
-    required this.addTaskCallback,
-  }) : super(key: key);
-
-  final Function addTaskCallback;
+  const AddTaskButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +14,7 @@ class AddTaskButton extends StatelessWidget {
         showModalBottomSheet(
           context: context,
           isScrollControlled: true,
-          builder: (context) => AddTaskScreen(
-            addTaskCallback: addTaskCallback,
-          ),
+          builder: (context) => AddTaskScreen(),
         );
       },
     );

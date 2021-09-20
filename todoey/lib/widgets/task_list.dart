@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'package:todoey/models/task.dart';
+import 'package:todoey/models/task_data.dart';
 import 'task_tile.dart';
 
 class TaskList extends StatefulWidget {
-  const TaskList(
-    this.tasks, {
-    Key? key,
-  }) : super(key: key);
-
-  final List<Task> tasks;
+  const TaskList({Key? key}) : super(key: key);
 
   @override
   State<TaskList> createState() => _TaskListState();
@@ -18,26 +14,26 @@ class TaskList extends StatefulWidget {
 class _TaskListState extends State<TaskList> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text('You have ${widget.tasks.length} tasks'),
-        ListView.builder(
-          shrinkWrap: true,
-          itemCount: widget.tasks.length,
-          itemBuilder: (context, int index) {
-            return TaskTile(
-              task: widget.tasks[index].title,
-              isChecked: widget.tasks[index].isDone,
-              checkboxCallback: (bool? value) {
-                setState(() {
-                  widget.tasks[index].toggleDone();
-                });
-              },
-            );
-          },
-        ),
-      ],
-    );
+    return Consumer<TaskData>(builder: (context, taskData, child) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text('You have ${taskData.tasksCount} tasks'),
+          ListView.builder(
+            shrinkWrap: true,
+            itemCount: taskData.tasksCount,
+            itemBuilder: (context, int index) {
+              return TaskTile(
+                task: taskData.tasks[index].title,
+                isChecked: taskData.tasks[index].isDone,
+                checkboxCallback: (bool? value) {
+                  taskData.updateTask(taskData.tasks[index]);
+                },
+              );
+            },
+          ),
+        ],
+      );
+    });
   }
 }
