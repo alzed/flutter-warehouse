@@ -2,7 +2,7 @@
 
 A BMI calculator Flutter application.
 
-This project is a part of [The Complete 2021 Flutter Development Bootcamp with Dart](https://www.udemy.com/course/flutter-bootcamp-with-dart/) Udemy course.
+This project is a part of [The Complete 2021 Flutter Development Bootcamp with Dart](https://www.udemy.com/course/flutter-bootcamp-with-dart/) Udemy course using this [shot from Dribble](https://dribbble.com/shots/4585382-Simple-BMI-Calculator).
 
 <img src="https://user-images.githubusercontent.com/27342390/127381070-09c6a59e-05aa-43f1-b97e-305b45ea01f3.png" width="200" height="450">
 
