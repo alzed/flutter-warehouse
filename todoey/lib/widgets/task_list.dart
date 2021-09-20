@@ -18,7 +18,14 @@ class _TaskListState extends State<TaskList> {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text('You have ${taskData.tasksCount} tasks'),
+          Text(
+            'You have ${taskData.tasksCount} tasks',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20.0,
+              color: Color(0xFF004080),
+            ),
+          ),
           ListView.builder(
             shrinkWrap: true,
             itemCount: taskData.tasksCount,
@@ -28,6 +35,9 @@ class _TaskListState extends State<TaskList> {
                 isChecked: taskData.tasks[index].isDone,
                 checkboxCallback: (bool? value) {
                   taskData.updateTask(taskData.tasks[index]);
+                },
+                deleteTaskCallback: () {
+                  taskData.deleteTask(taskData.tasks[index]);
                 },
               );
             },
