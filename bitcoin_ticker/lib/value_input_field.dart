@@ -25,9 +25,7 @@ class ValueInputField extends StatelessWidget {
       keyboardType: TextInputType.number,
       maxLength: 10,
       decoration: InputDecoration(
-        counterText: '',
-        border: InputBorder.none,
-      ),
+          counterText: '', border: InputBorder.none, hintText: '0'),
       onChanged: (value) {
         valueConverter(value);
       },

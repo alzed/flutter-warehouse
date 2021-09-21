@@ -11,6 +11,7 @@ class BitcoinTickerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Color(0xFF1D3B53),
         body: ConverterScreen(),
