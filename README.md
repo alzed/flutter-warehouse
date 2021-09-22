@@ -26,5 +26,7 @@ This repository contains practice projects in flutter. Projects are from Udemy c
 
 [Flashchat](flashchat)
 
-Todo - [Google Tasks clone](https://github.com/alzed/google_tasks_clone)
+[Todoey](todoey)
+
+[Google Tasks clone](https://github.com/alzed/google_tasks_clone)
 
