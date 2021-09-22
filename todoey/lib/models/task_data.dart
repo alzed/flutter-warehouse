@@ -14,6 +14,14 @@ class TaskData extends ChangeNotifier {
     return UnmodifiableListView(_tasks);
   }
 
+  int get completedTasksCount {
+    int count = 0;
+    _tasks.forEach((element) {
+      count += element.isDone ? 1 : 0;
+    });
+    return count;
+  }
+
   void addTask(String task, int priority) {
     _tasks.add(Task(title: task, priority: priority));
     notifyListeners();
