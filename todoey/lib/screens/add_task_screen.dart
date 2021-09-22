@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:todoey/models/task_data.dart';
+import 'package:todoey/widgets/priority_card.dart';
+import 'package:todoey/constants.dart';
 
 class AddTaskScreen extends StatefulWidget {
   const AddTaskScreen({Key? key}) : super(key: key);
@@ -12,6 +14,7 @@ class AddTaskScreen extends StatefulWidget {
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
   final controller = TextEditingController();
+  int priority = 0;
 
   @override
   void dispose() {
@@ -42,30 +45,64 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 autofocus: true,
                 decoration: InputDecoration(hintText: 'Task'),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.clear,
-                      color: Color(0xFF004080),
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.clear,
+                        color: kPrimaryColor,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                     ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.check,
-                      color: Color(0xFF004080),
+                    Row(
+                      children: [
+                        PriorityCard(
+                          priority: 1,
+                          currentPriority: priority,
+                          onPressed: () {
+                            setState(() {
+                              priority = 1;
+                            });
+                          },
+                        ),
+                        PriorityCard(
+                          priority: 2,
+                          currentPriority: priority,
+                          onPressed: () {
+                            setState(() {
+                              priority = 2;
+                            });
+                          },
+                        ),
+                        PriorityCard(
+                          priority: 3,
+                          currentPriority: priority,
+                          onPressed: () {
+                            setState(() {
+                              priority = 3;
+                            });
+                          },
+                        ),
+                      ],
                     ),
-                    onPressed: () {
-                      Provider.of<TaskData>(context, listen: false)
-                          .addTask(controller.text);
-                      Navigator.of(context).pop();
-                    },
-                  )
-                ],
+                    IconButton(
+                      icon: Icon(
+                        Icons.check,
+                        color: kPrimaryColor,
+                      ),
+                      onPressed: () {
+                        Provider.of<TaskData>(context, listen: false)
+                            .addTask(controller.text, priority);
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                ),
               )
             ],
           ),

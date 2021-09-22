@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:todoey/models/task_data.dart';
 import 'task_tile.dart';
+import 'package:todoey/constants.dart';
 
 class TaskList extends StatefulWidget {
   const TaskList({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _TaskListState extends State<TaskList> {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20.0,
-              color: Color(0xFF004080),
+              color: kPrimaryColor,
             ),
           ),
           ListView.builder(
@@ -32,6 +33,7 @@ class _TaskListState extends State<TaskList> {
             itemBuilder: (context, int index) {
               return TaskTile(
                 task: taskData.tasks[index].title,
+                priority: taskData.tasks[index].priority,
                 isChecked: taskData.tasks[index].isDone,
                 checkboxCallback: (bool? value) {
                   taskData.updateTask(taskData.tasks[index]);

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:todoey/widgets/add_task_button.dart';
 import 'package:todoey/widgets/task_list.dart';
+import 'package:todoey/constants.dart';
 
 class TaskScreen extends StatelessWidget {
   const TaskScreen({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class TaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF004080),
+      backgroundColor: kPrimaryColor,
       floatingActionButton: AddTaskButton(),
       body: SafeArea(
         child: Column(
