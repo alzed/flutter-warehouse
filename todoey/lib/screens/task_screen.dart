@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:percent_indicator/percent_indicator.dart';
+import 'package:todoey/models/task_data.dart';
 
 import 'package:todoey/widgets/add_task_button.dart';
 import 'package:todoey/widgets/task_list.dart';
+import 'package:todoey/constants.dart';
 
 class TaskScreen extends StatelessWidget {
   const TaskScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final double completedTasksRate =
+        Provider.of<TaskData>(context).completedTasksCount /
+            Provider.of<TaskData>(context).tasksCount;
+
     return Scaffold(
-      backgroundColor: Color(0xFF004080),
+      backgroundColor: kPrimaryColor,
       floatingActionButton: AddTaskButton(),
       body: SafeArea(
         child: Column(
@@ -32,11 +40,27 @@ class TaskScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  Icon(
-                    Icons.data_usage,
-                    color: Colors.white,
-                    size: 40.0,
-                  ),
+                  CircularPercentIndicator(
+                    radius: 50.0,
+                    lineWidth: 5.0,
+                    percent: completedTasksRate,
+                    animation: true,
+                    circularStrokeCap: CircularStrokeCap.round,
+                    center: Text(
+                      "%",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                      ),
+                    ),
+                    progressColor: Colors.white,
+                    backgroundColor: Colors.white30,
+                  )
+                  // Icon(
+                  //   Icons.data_usage,
+                  //   color: Colors.white,
+                  //   size: 40.0,
+                  // ),
                 ],
               ),
             ),

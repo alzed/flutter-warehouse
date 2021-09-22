@@ -22,8 +22,8 @@ class _ConverterScreenState extends State<ConverterScreen> {
   @override
   void initState() {
     super.initState();
-    bitcoinValue.text = '0';
-    currencyValue.text = '0';
+    bitcoinValue.text = '';
+    currencyValue.text = '';
   }
 
   @override

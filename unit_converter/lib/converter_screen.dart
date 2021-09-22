@@ -11,6 +11,10 @@ class ConverterScreen extends StatefulWidget {
 }
 
 class _ConverterScreenState extends State<ConverterScreen> {
+  List<Widget> dropdownItems(String category) {
+    return [];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

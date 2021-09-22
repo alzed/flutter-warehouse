@@ -18,19 +18,11 @@ class FlashChat extends StatefulWidget {
 }
 
 class _FlashChatState extends State<FlashChat> {
-  bool _initialized = false;
-  bool _error = false;
-
   void initializeFlutterFire() async {
     try {
       await Firebase.initializeApp();
-      setState(() {
-        _initialized = true;
-      });
     } catch (e) {
-      setState(() {
-        _error = true;
-      });
+      print(e);
     }
   }
 
